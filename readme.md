@@ -64,21 +64,70 @@
    3. API
       1. Storage
          1. localStorage
+            1. Permamant Browser Storage
+            2. Data is stored in JSOn format
+            3. preferred for not-volatile data management
+            4. The 'localStorage' object
+               1. setItem() , to add item
+               2. getItem(), to retrieve item
+               3. clear(), to cear the storage
+               4. keys(), return itsm key
          2. sessionStorage
+            1. Volatile Browser Storage
+            2. Data is stored in JSOn format
+            3. preferred for not-volatile data management
+            4. The 'sessionStorage' object
+               1. setItem() , to add item
+               2. getItem(), to retrieve item
+               3. clear(), to cear the storage
+               4. keys(), return itsm key
          3. indexedDB
+            1. Browsers Database
+            2. window.indexedDB
+               1. ObjectStore like tables
       2. Networking
          1. AJAX
          2. Socket
-      3. Devices
+      3. Graphics API
+         1. Canvas
+            1. Pixel based graphics 
+         2. SVG
+            1. Vector based rendering
+            2. <svg>
+               1. Xml based rendering system
+               2. line
+                  1. <line x1="" y1="" x2="" y2="">
+               3. rectangle
+                  1. <rectangle >
+               4. circle
+                  1. Design cirsle
+               5. polygon
+                  1. freehand line
+      4. WebWorker object used for Threading
+      5. Devices
          1. Sensors
-      4. Files
+      6. Files
          1. Text, BLOB
-      5. Drag-Drop
-      6. Geolocation
+      7. Drag-Drop
+      8. Geolocation
          1. Maps
-3. CSS 3 Faatures
+3. CSS 3 Features
    1. Filters
       1. id filters , set using # operator
       2. class filter, set using . operator
       3. tag filter, set using HTML tag name
       4. Position Based Filters introduced in CSS 3
+         1. ~, e1~e2, all e2 succeeds to e1
+         2. >, e1>e2, all e1 preceeds e2
+      5. class="Fisrt Second Third"
+         1. Attribute^=Value
+            1. The Style will be applied based on the first occurance of value
+            2. <div class="first second third">
+            2. <div class="second first third"> 
+            2. <div class="first  third second"> 
+         2.  class^=first
+             1.  Apply style to all DOM Elements having class value starts with first
+     1.  Attribute *= value
+         1.  The value of the attribute at 'any' position
+     2.  Attribute $= value
+         1.  The value of attribute at 'last' position 
