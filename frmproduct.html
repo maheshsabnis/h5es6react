@@ -1,0 +1,133 @@
+<html>
+
+<head>
+    <style type="text/css">
+        #productId {
+            height: 30px;
+            width: 200px;
+            font-size: 20px;
+            font-weight: bold;
+            background-color: aqua;
+        }
+        
+        .c1 {
+            height: 30px;
+            width: 200px;
+            font-size: 20px;
+            font-weight: bold;
+            background-color: aqua;
+            border: double;
+        }
+        
+        table td {
+            border: dotted;
+        }
+        
+        .error {
+            background-color: red;
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            // array declaration
+            var categories = ["Electronics", "Electrical", "Food"];
+            var products = [];
+            var headers = [];
+
+            var options = '';
+            for (var i = 0; i < categories.length; i++) {
+                options += '<option value="' + categories[i] + '">' + categories[i] + '</option>';
+            }
+            // set the options to tye datalist
+            document.getElementById('lstcategories').innerHTML = options;
+
+            // reference of save button    
+            var btnSave = document.getElementById('btnSave');
+            btnSave.addEventListener('click', function() {
+                // local object, that will be used to store product data
+                // the JSON object having K:V 
+                var prd = {
+                    ProductId: document.getElementById('productId').value,
+                    ProductName: document.getElementById('productName').value,
+                    CategoryName: document.getElementById('categoryName').value,
+                    ProductPrice: document.getElementById('productPrice').value
+                };
+
+                // push the product object in the array
+                products.push(prd);
+                for (var h in prd) {
+                    headers.push(h);
+                }
+                alert(JSON.stringify(h));
+
+                alert(JSON.stringify(products));
+            }, false);
+            // reference of new button
+            var btnNew = document.getElementById('btnNew');
+            btnNew.addEventListener('click', function() {
+                // logic goes here
+                // var inputs = document.getElementsByTagName('input');
+                // for (var i = 0; i < inputs.length; i++) {
+                //     inputs[i].value = "";
+                // }
+
+                var inputs = document.getElementsByClassName('c1');
+                for (var i = 0; i < inputs.length; i++) {
+                    inputs[i].value = "";
+                }
+            }, false);
+
+            document.getElementById('productName').addEventListener('change', function() {
+                // applying class dynamically
+                if (this.value.length < 4) {
+                    this.className = 'error';
+                } else {
+                    this.className = 'c1';
+                }
+            }, true);
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Product Management System</h1>
+    <table>
+        <tr>
+            <td>Product Id</td>
+            <td>
+                <input type="text" id='productId' class="c1">
+            </td>
+        </tr>
+        <tr>
+            <td>Product Name</td>
+            <td>
+                <input type="text" id='productName' class="c1">
+            </td>
+        </tr>
+        <tr>
+            <td>Category Name</td>
+            <td>
+                <input type="text" id='categoryName' class="c1" list="lstcategories">
+                <datalist id='lstcategories'></datalist>
+            </td>
+        </tr>
+        <tr>
+            <td>Product Price</td>
+            <td>
+                <input type="number" min="100" class="c1" id='productPrice'>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="button" value="New" id='btnNew'>
+            </td>
+            <td>
+                <input type="button" value="Save" id='btnSave'>
+            </td>
+        </tr>
+    </table>
+    <hr>
+    <table></table>
+</body>
+
+</html>

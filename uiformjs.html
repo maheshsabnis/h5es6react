@@ -1,0 +1,37 @@
+<html>
+
+<head>
+    <script>
+        window.onload = function() {
+            // alert('Hello World!!!');
+            function submit() {
+                alert('the form is submitted');
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <form name='frmValues' onsubmit="submit()">
+        <h1>The HTML UI Elements 'Input' Types</h1>
+        Text Type<input type="text" id='txtText' name='txtText' required value="Mahesh">
+        <br> Number Type <input type="number" id='txtNumber' name='txtNumber' required min="0" max="100" />
+        <br> Month Type <input type="month" id='txtMonth' name='txtMonth'>
+        <br> Week Type <input type="week" id='txtWeek' name='txtWeek'>
+        <br> Date Type <input type="date" id='txtDate' name='txtDate'>
+        <br> Range Type
+        <input type="range" id='txtRange' name='txtRange' min="0" max="100" />
+        <br>
+        <input type="text" id='txtnames' list="lstnames" />
+        <datalist id='lstnames'>
+            <option value="MS">Microsoft</option>
+            <option value="ORA">Oracle</option>
+            <option value="IBM">IBM</option>
+            <option value="FB">Facebook</option>
+        </datalist>
+        <br>
+        <input type="submit" value='Save' />
+    </form>
+</body>
+
+</html>
