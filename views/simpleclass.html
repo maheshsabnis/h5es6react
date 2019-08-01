@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./../bundle/simpleclass.bundle.js"></script>
+    <script>
+        window.onload = function() {
+            var myobj = new SimpleClass();
+
+            var btn = document.getElementById('btnProcess');
+            btn.addEventListener('click', function() {
+                var res1 = myobj.processName("U");
+                var res2 = myobj.processName("L");
+                alert(res1 + "  " + res2);
+            }, false);
+        }
+    </script>
+</head>
+
+<body>
+    <h1>The Simple ES 6 class</h1>
+    <input type="button" value="Process" id="btnProcess">
+</body>
+
+</html>

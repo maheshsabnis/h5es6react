@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        table tr td {
+            border: double
+        }
+    </style>
+    <script src="./../bundle/application.bundle.js"></script>
+    <script>
+        window.onload = function() {
+            // 1. instance of ProductInfo object
+            var obj = new ProductInfo();
+
+            // logic to add data in datalist for Manufacturers
+            var manufacturers = obj.manufacturers;
+            var options = "";
+            for (var i = 0; i < manufacturers.length; i++) {
+                options += '<option value="' + manufacturers[i] + '">' + manufacturers[i] + '</option>';
+            }
+            document.getElementById('lstman').innerHTML = options;
+            // logic to generate table headers
+            var headers = obj.headers;
+            var tr = "<tr>";
+            for (var i = 0; i < headers.length; i++) {
+                tr += '<td>' + headers[i] + '</td>';
+            }
+            tr += "</tr>";
+            document.getElementById('thead').innerHTML = tr;
+            // logic to generate table body
+            var products = obj.getProducts();
+            var trow;
+            for (var i = 0; i < products.length; i++) {
+                trow += '<tr><td>' + products[i].ProductId + '</td><td>' +
+                    products[i].ProductName + '</td><td>' +
+                    products[i].Manufacturer + '</td><td>' +
+                    products[i].Price + '</td></tr>';
+            }
+            document.getElementById('tbody').innerHTML = trow;
+
+            var btnsave = document.getElementById('btnsave');
+
+            btnsave.addEventListener('click', function() {
+                var prd = {
+                    ProductId: document.getElementById('txtpid').value,
+                    ProductName: document.getElementById('txtpname').value,
+                    Manufacturer: document.getElementById('txtman').value,
+                    Price: document.getElementById('txtprice').value
+                };
+                products = obj.saveProduct(prd);
+                console.log(JSON.stringify(products));
+            }, false);
+
+
+        }
+    </script>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <td>ProductId</td>
+            <td>
+                <input type="text" id="txtpid">
+            </td>
+        </tr>
+        <tr>
+            <td>ProductName</td>
+            <td>
+                <input type="text" id="txtpname">
+            </td>
+        </tr>
+        <tr>
+            <td>Manufacturer</td>
+            <td>
+                <input type="text" id="txtman" list="lstman">
+                <datalist id="lstman"></datalist>
+            </td>
+        </tr>
+        <tr>
+            <td>Price</td>
+            <td>
+                <input type="text" id="txtprice">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="button" value="New" id="btnnew">
+            </td>
+            <td>
+                <input type="button" value="Save" id="btnsave">
+            </td>
+        </tr>
+    </table>
+    <hr>
+    <table>
+        <thead id="thead"></thead>
+        <tbody id="tbody"></tbody>
+    </table>
+</body>
+
+</html>
