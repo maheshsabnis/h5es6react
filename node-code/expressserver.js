@@ -16,13 +16,13 @@ var Products = [{ ProductId: 101, ProductName: 'Laptop', Manufacturer: 'IBM', Ca
 // the first parameter is url and second parameter
 // is http request listener for Request and Response
 instance.get('/api/products', function(req, resp) {
-    resp.send(JSON.stringify(emps));
+    resp.send(JSON.stringify(Products));
 });
 instance.get('/api/products/:id', function(req, resp) {
     var id = req.params.id;
     console.log(id);
-    var data = emps.filter(function(v, i) {
-        return v.EmpNo == id;
+    var data = Products.filter(function(v, i) {
+        return v.ProductId == id;
     });
     resp.send(JSON.stringify(data));
 });
@@ -30,8 +30,8 @@ instance.get('/api/products/:id', function(req, resp) {
 instance.post('/api/products', function(req, resp) {
     // data will be send through body
     console.log(JSON.stringify(req.body));
-    emps.push(req.body);
-    resp.send(JSON.stringify(emps));
+    Products.push(req.body);
+    resp.send(JSON.stringify(Products));
 });
 // search and update
 instance.put('/api/products/:id', function(req, resp) {
